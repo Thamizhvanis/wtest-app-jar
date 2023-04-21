@@ -7,6 +7,7 @@ package wtest;
 
 //import static org.junit.Assert.assertTrue;
 
+//import org.junit.After;
 //import org.junit.Test;
 //import org.junit.Assert;
 
@@ -21,10 +22,11 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 public class App
 {
 
-    public static void main( String[] args ) throws InterruptedException
+    public static WebDriver driver;
+
+    public static void main( String[] args ) throws Exception
     {
             System.out.println( "Hello World!" );
-            WebDriver driver;
             //WebDriverManager.chromedriver().setup();
             System.setProperty("webdriver.chrome.driver", "/home/ubuntu/chromedriver");
             ChromeOptions options = new ChromeOptions();
@@ -41,7 +43,13 @@ public class App
   //          String actualTitle = driver.getTitle();
   //          String expectedTitle ="Intellipaat";
   //          Assert.assertEquals("Condition true", actualTitle, expectedTitle);
-   //         Thread.sleep(2000);
+  //          Thread.sleep(2000);
             driver.quit();
     }
+
+    public void cleanup()
+    {
+      driver.quit();
+    }
+
 }
